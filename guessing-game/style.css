@@ -1,0 +1,53 @@
+            body {
+                background-color: black;
+                color: yellowgreen;
+                background-image: url("matrix.jpg");
+            }
+            
+            h1 {
+                text-align: center;
+            }
+            
+            .input-default {
+                height: 600px !important;
+                width: 320px !important;
+                font-size: 180px !important;
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                margin-right: 10px;
+                background-color: lightslategray
+            }
+            
+            .input-correct-number-wrong-box {
+                height: 600px !important;
+                width: 320px !important;
+                font-size: 180px !important;
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                margin-right: 10px;
+                background-color: yellow;
+            }
+            
+            .input-correct-number-correct-box {
+                height: 600px !important;
+                width: 320px !important;
+                font-size: 180px !important;
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                margin-right: 10px;
+                background-color: limegreen;
+            }
+            
+            .input-wrong-number {
+                height: 600px !important;
+                width: 320px !important;
+                font-size: 180px !important;
+                text-align: center;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                margin-right: 10px;
+                background-color: red;
+            }
