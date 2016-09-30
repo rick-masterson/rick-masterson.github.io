@@ -1,0 +1,93 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    background-color:navajowhite;
+  
+}
+
+p {
+    padding: 15px;
+}
+#wrapper {
+    width: 100%;
+    min-width: 300px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#header {
+    float: right;
+    height: 90px;
+    width: 80%;
+    background-color: #FFCC33;
+    font-size: 30px;
+    color:#8a0c0d;
+}
+#headerlogo {
+    float: left;
+    height: 90px;
+    width: 20%;
+    background-color:#FFCC33;
+}
+#navigation {
+    float: left;
+    height: 80px;
+    width: 100%;
+    background-color: #FFCC33;
+}
+ul {
+    list-style-type: none;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#8a0c0d;
+    font-size: 25px;
+}
+li {
+    float: left;
+    
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color:#d6232f;
+}
+#bannerwrap {
+    float: left;
+    width: 100%;
+}
+#banner {
+    background-color: #e0bebc;
+    margin-right: 150px;
+}
+#rightcolumn {
+    background-color:#e1ac87 ;
+    width: 150px;
+    margin-left: -150px;
+    float: left;
+}
+#products {
+    height: 50px;
+    width: 100%;
+    font-size: 25px;
+    color:white;
+    background-color: #8a0c0d;
+    clear: both;
+}
+.product-box {
+    float: left;
+    background-color: #FFCC33;
+    width: 22%;
+    height: 200px;
+    margin: 10px;
+    border: 2px solid #d6232f;
+    font-size: 35px;
+}
+
+  
