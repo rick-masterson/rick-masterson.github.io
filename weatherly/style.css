@@ -1,7 +1,6 @@
-
 .input-nav {
     height: 35px !important;
-    width: 140px !important;
+    width: 110px !important;
     font-size: 14px !important;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -9,37 +8,34 @@
 }
 
 .glyph {
-    color: limegreen;
-    height: 35px !important;
+    color: white;
     margin-top: 20;
-}
-
-.container {
-    float: left;
-    margin-left: 0px;
 }
 
 .div-main {
     border-radius: 15px;
-    border: 1px solid #333333;
-    background-image:  url("clear-day.jpg");  
-
+    border: 2px solid #333333;
+    background-color: black;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 2px; 
+    padding: 2px;
     margin-left: 20px;
     margin-right: 20px;
-    max-width:100%;
-    max-height:100%;
-    color:white;
+    max-width: 100%;
+    max-height: 100%;
+    color: lightgreen;
     font-weight: bold;
+    text-align: center;
 }
-    .fb-img{
-        height: 45px;
-        width: 45px;
-        margin-left: 10px;
-    }
-    
-h1 {
-    font-size:  200%;
+
+.darksky-img {
+    height: 35px;
+    width: 65px;
+    margin-left: 10px;
+}
+
+h1 h2 h3 h4 h5 h6 {
+    color: white;
+    font-family: Arial, Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
 }

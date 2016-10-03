@@ -1,0 +1,39 @@
+.input-nav {
+    height: 35px !important;
+    width: 110px !important;
+    font-size: 14px !important;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+.glyph {
+    color: white;
+    margin-top: 20;
+}
+
+.div-main {
+    border-radius: 15px;
+    border: 2px solid #333333;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2px;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    color: lightgreen;
+    font-weight: bold;
+    text-align: center;
+}
+
+#map {
+    height: 550px;
+}
+
+h1 h2 h3 h4 h5 h6 {
+    color: white;
+    font-family: Arial, Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
