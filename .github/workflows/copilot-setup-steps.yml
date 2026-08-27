@@ -1,0 +1,2 @@
+export MODEL_API_KEY="LLM|{numeric_id}|{secret}"
+pip install openai
