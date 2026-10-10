@@ -1,88 +1,105 @@
-$(function() {
-    $("#submit").on("click", getWeather_Click);
+// Weatherly: look up a place and add a card with its current weather.
+// Uses Open-Meteo's free geocoding and forecast APIs, which need no API key.
 
+// WMO weather codes -> [description, icon name]
+var WEATHER = {
+    0: ["Clear", "clear"],
+    1: ["Mainly clear", "partly-cloudy"],
+    2: ["Partly cloudy", "partly-cloudy"],
+    3: ["Overcast", "cloudy"],
+    45: ["Fog", "fog"],
+    48: ["Freezing fog", "fog"],
+    51: ["Light drizzle", "rain"],
+    53: ["Drizzle", "rain"],
+    55: ["Heavy drizzle", "rain"],
+    56: ["Freezing drizzle", "sleet"],
+    57: ["Freezing drizzle", "sleet"],
+    61: ["Light rain", "rain"],
+    63: ["Rain", "rain"],
+    65: ["Heavy rain", "rain"],
+    66: ["Freezing rain", "sleet"],
+    67: ["Freezing rain", "sleet"],
+    71: ["Light snow", "snow"],
+    73: ["Snow", "snow"],
+    75: ["Heavy snow", "snow"],
+    77: ["Snow grains", "snow"],
+    80: ["Rain showers", "rain"],
+    81: ["Rain showers", "rain"],
+    82: ["Violent rain showers", "rain"],
+    85: ["Snow showers", "snow"],
+    86: ["Heavy snow showers", "snow"],
+    95: ["Thunderstorm", "rain"],
+    96: ["Thunderstorm with hail", "sleet"],
+    99: ["Thunderstorm with hail", "sleet"]
+};
 
+function iconFor(name, isDay) {
+    if (name === "clear" || name === "partly-cloudy") name += isDay ? "-day" : "-night";
+    return "icons/SVG/" + name + ".svg";
+}
+
+function getJSON(url) {
+    return fetch(url).then(function (response) {
+        if (!response.ok) throw new Error("Request failed (" + response.status + ")");
+        return response.json();
+    });
+}
+
+function findPlace(text) {
+    var url = "https://geocoding-api.open-meteo.com/v1/search?count=1&name=" + encodeURIComponent(text);
+    return getJSON(url).then(function (data) {
+        if (!data.results || !data.results.length) throw new Error("No place found for \"" + text + "\".");
+        return data.results[0];
+    });
+}
+
+function getWeather(place) {
+    var url = "https://api.open-meteo.com/v1/forecast?latitude=" + place.latitude +
+        "&longitude=" + place.longitude +
+        "&current=temperature_2m,weather_code,is_day" +
+        "&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
+        "&temperature_unit=fahrenheit&timezone=auto&forecast_days=1";
+    return getJSON(url);
+}
+
+function placeName(place) {
+    return [place.name, place.admin1, place.country_code].filter(Boolean).join(", ");
+}
+
+function addCard(place, data) {
+    var card = document.getElementById("card-template").content.cloneNode(true);
+    var weather = WEATHER[data.current.weather_code] || ["Unknown", "cloudy"];
+
+    card.querySelector(".place").textContent = placeName(place);
+    card.querySelector(".icon").src = iconFor(weather[1], data.current.is_day);
+    card.querySelector(".summary").textContent = weather[0];
+    card.querySelector(".temp").textContent = Math.round(data.current.temperature_2m) + "°F";
+    card.querySelector(".high-low").textContent =
+        "High " + Math.round(data.daily.temperature_2m_max[0]) + "°F / Low " +
+        Math.round(data.daily.temperature_2m_min[0]) + "°F";
+    card.querySelector(".precip").textContent =
+        "Chance of precipitation " + data.daily.precipitation_probability_max[0] + "%";
+    card.querySelector(".time").textContent = "Local time " + data.current.time.replace("T", " ");
+    card.querySelector(".close-card").addEventListener("click", function (e) {
+        e.currentTarget.closest(".col-sm-6").remove();
+    });
+
+    document.getElementById("cards").appendChild(card);
+}
+
+document.getElementById("search").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var input = document.getElementById("place");
+    var message = document.getElementById("message");
+    message.textContent = "Loading...";
+
+    findPlace(input.value.trim())
+        .then(function (place) {
+            return getWeather(place).then(function (data) { addCard(place, data); });
+        })
+        .then(function () {
+            message.textContent = "";
+            input.value = "";
+        })
+        .catch(function (err) { message.textContent = err.message; });
 });
-
-
-
-function getWeather_Click() {
-    var pcode = $('#zip').val()
-    getCords('', '', pcode)
-    console.log
-}
-
-
-
-function getCords_Complete(result) {
-    var latitude = result.results[0].geometry.location.lat
-    var longitude = result.results[0].geometry.location.lng
-    var local = result.results[0].formatted_address
-
-    function generateCard(data) {
-        var weatherInfo = {
-            time: new Date(data.currently.time * 1000),
-            temp: Math.round(data.currently.temperature) + "&#176; F",
-            clouds: (data.currently.summary),
-            precip: ' Chance of precipitation  ' + Math.round(data.currently.precipProbability * 100) + '%',
-            high: Math.round(data.daily.data[0].temperatureMax) + "  &#176; F",
-            low: Math.round(data.daily.data[0].temperatureMin) + "  &#176; F"
-
-        }
-        console.log(weatherInfo)
-        templateGen(weatherInfo)
-    }
-
-
-
-    function templateGen(weatherInfo) {
-        var template = $('#templateDiv').html()
-        template = template.replace('@@LOCAL@@', local)
-        template = template.replace('@@TIME@@', 'Current Time' + weatherInfo.time.toLocaleString())
-        template = template.replace('@@TEMP@@', weatherInfo.temp)
-        template = template.replace('@@CLOUDS@@', weatherInfo.clouds)
-        template = template.replace('@@MAX@@', weatherInfo.low)
-        template = template.replace('@@MIN@@', weatherInfo.high)
-        template = template.replace('@@PRECIP@@', weatherInfo.precip)
-
-        post(template)
-    }
-
-    function post(template) {
-        $('#card').append(template)
-
-    }
-
-    var darkSky = {
-        url: "https://api.darksky.net/forecast/REMOVED_API_KEY/" + latitude + "," + longitude,
-        dataType: "jsonp",
-        success: generateCard
-    };
-    $.ajax(darkSky);
-    console.log
-
-}
-
-
-
-function getCords(city, state, zipCode) {
-    var address = ''
-    if (zipCode.length != 0) {
-        address = zipCode.trim()
-    } else if (city.length != 0 && state != 0) {
-        address = city.trim() + ',' + state
-    } else {
-        return; // They didn't give anything valid, so exit
-    }
-
-    var googleUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=REMOVED_API_KEY'
-
-    var request = {
-        url: googleUrl,
-
-        success: getCords_Complete
-
-    }
-
-    $.ajax(request)
-}

@@ -34,33 +34,31 @@ var adventuringParty = {
 // This function lists all characters in the party
 function listCharacters() {
     console.log("Characters:");
-    for (i in adventuringParty) {
-        console.log(" * " + adventuringParty[i].name);
+    for (var key in adventuringParty) {
+        console.log(" * " + adventuringParty[key].name);
     }
 }
 // This function should list all weapons for the character
 function listWeapons(character) {
     console.log("Listing weapons for " + character.name + ":");
-    for (i in character.weapons) {
-        console.log(" * " + character.weapons[i].name);
-    }
+    character.weapons.forEach(function (weapon) {
+        console.log(" * " + weapon.name);
+    });
 }
 // This function should attack with the specified weapon
 // It uses the weapon damage from the object to determine the maximum damage of this weapon
 
 
 function weaponAttack(character, weaponName) {
-    console.log(character.name + " attacks with his " + weaponName);
-    var maxDamage;
-    for (i in character.weapons) {
-
-        var weapon = character.weapons[i];
-
-        if (weapon.name === weaponName) {
-            maxDamage = weapon.damage;
-
-        }
+    var weapon = character.weapons.find(function (w) { return w.name === weaponName; });
+    if (!weapon) {
+        console.log(character.name + " has no " + weaponName);
+        return;
     }
+    console.log(character.name + " attacks with his " + weaponName);
+    // A bow does no damage itself; use its strongest arrow.
+    var maxDamage = weapon.damage !== undefined ? weapon.damage :
+        Math.max.apply(null, weapon.arrow.map(function (a) { return a.damage; }));
 
     console.log("He hits for " + (Math.round(Math.random() * maxDamage)) + " damage");
 }

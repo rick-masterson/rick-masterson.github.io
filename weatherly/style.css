@@ -1,41 +1,42 @@
-.input-nav {
-    height: 35px !important;
-    width: 110px !important;
-    font-size: 14px !important;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-right: 10px;
+.navbar-form .form-control {
+    display: inline-block;
+    width: 200px;
 }
 
-.glyph {
-    color: white;
-    margin-top: 20;
+.message {
+    margin-left: 10px;
+    color: #ccc;
 }
 
-.div-main {
-    border-radius: 15px;
+.card {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
     border: 2px solid #333333;
+    border-radius: 15px;
     background-color: black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 2px;
-    margin-left: 20px;
-    margin-right: 20px;
-    max-width: 100%;
-    max-height: 100%;
     color: lightgreen;
     font-weight: bold;
     text-align: center;
 }
 
-.darksky-img {
-    height: 35px;
-    width: 65px;
-    margin-left: 10px;
+.card h1, .card h3, .card h4 {
+    color: white;
 }
 
-h1 h2 h3 h4 h5 h6 {
-    color: white;
-    font-family: Arial, Georgia, 'Times New Roman', Times, serif;
+.card .icon {
+    width: 64px;
+    height: 64px;
+}
+
+.close-card {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+footer {
+    padding: 20px;
     text-align: center;
+    font-size: 12px;
 }
