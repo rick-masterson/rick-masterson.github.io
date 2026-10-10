@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- Developed with the help of Claude Code (https://claude.com/claude-code) -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Orac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../assets/site.css">
+    <style>
+        body { min-height: 100vh; display: grid; place-items: center; margin: 0; }
+        .gate { text-align: center; padding: 16px; }
+        .gate h1 { font-size: 56px; margin: 0; background: var(--gradient);
+            -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .gate p { color: var(--muted); font-family: var(--mono); }
+        .bar { width: 220px; height: 3px; margin: 18px auto 0; border-radius: 3px;
+            background: linear-gradient(90deg, #ff7a2f, #e0508a, #8b5cf6, #e0508a, #ff7a2f);
+            background-size: 200% 100%; animation: flow 2s linear infinite; }
+        @keyframes flow { to { background-position: -200% 0; } }
+        @media (prefers-reduced-motion: reduce) { .bar { animation: none; } }
+    </style>
+</head>
+<body>
+    <main class="gate">
+        <h1>orac</h1>
+        <p id="status">Locating Orac…</p>
+        <div class="bar"></div>
+    </main>
+    <script>
+        // target.json is written by orac-tunnel.sh on the Orac host whenever its
+        // Cloudflare tunnel starts. Only trycloudflare.com addresses are followed.
+        fetch("target.json?" + Date.now(), { cache: "no-store" })
+            .then(r => r.ok ? r.json() : Promise.reject())
+            .then(({ url }) => {
+                const u = new URL(url);
+                if (u.protocol !== "https:" || !u.hostname.endsWith(".trycloudflare.com")) throw 0;
+                location.replace(u.href);
+            })
+            .catch(() => {
+                document.getElementById("status").textContent = "Orac is offline right now.";
+                document.querySelector(".bar").remove();
+            });
+    </script>
+</body>
+</html>
