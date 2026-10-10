@@ -1,6 +1,6 @@
 # rick-masterson.github.io
 
-Small HTML, CSS and JavaScript projects from my 2016 internship at Interapt, cleaned up in 2026.
+Small HTML, CSS and JavaScript projects from my 2016 Interapt internship with TEKY at Big Sandy Community and Technical College in Eastern Kentucky, cleaned up in 2026.
 
 - `guessing-game/`: guess three different digits in ten tries.
 - `weatherly/`: weather cards for any city or zip code (Open-Meteo, no API key).
