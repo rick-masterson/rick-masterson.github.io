@@ -32,26 +32,14 @@
         <div class="bar"></div>
     </main>
     <script>
-        // target.json is written by orac-tunnel.sh on the Orac host whenever its
-        // Cloudflare tunnel starts. Only trycloudflare.com addresses are used.
-        // The dashboard is shown in a full-page frame so the address bar keeps
-        // this page's address instead of the tunnel's.
-        fetch("target.json?" + Date.now(), { cache: "no-store" })
-            .then(r => r.ok ? r.json() : Promise.reject())
-            .then(({ url }) => {
-                const u = new URL(url);
-                if (u.protocol !== "https:" || !u.hostname.endsWith(".trycloudflare.com")) throw 0;
-                const frame = document.createElement("iframe");
-                frame.className = "frame";
-                frame.title = "Orac";
-                frame.src = u.href;
-                frame.onload = () => document.querySelector(".gate").remove();
-                document.body.append(frame);
-            })
-            .catch(() => {
-                document.getElementById("status").textContent = "Orac is offline right now.";
-                document.querySelector(".bar").remove();
-            });
+        // Orac's permanent address (Tailscale Funnel). The dashboard is shown in
+        // a full-page frame so the address bar keeps this page's address.
+        const frame = document.createElement("iframe");
+        frame.className = "frame";
+        frame.title = "Orac";
+        frame.src = "https://orac.tail70cb2d.ts.net/";
+        frame.onload = () => document.querySelector(".gate").remove();
+        document.body.append(frame);
     </script>
 </body>
 </html>
