@@ -20,7 +20,7 @@
 }
 
 .map-card .leaflet-control-attribution {
-    background: rgba(17, 24, 33, 0.8);
+    background: rgba(20, 15, 31, 0.8);
     color: var(--muted);
 }
 

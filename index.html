@@ -16,6 +16,72 @@
         .tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .tag { padding: 2px 8px; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; font: 11px var(--mono); }
         .project .arrow { color: var(--accent); font-family: var(--mono); }
+
+        /* Engraved name plate */
+        .plate-wrap {
+            position: relative;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            min-height: min(78vh, 640px);
+            padding: 40px 16px;
+            background: radial-gradient(ellipse at center, rgba(224, 80, 138, 0.08), transparent 65%);
+            font: 500 11px var(--mono);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .plate-row { display: flex; justify-content: space-between; gap: 16px; max-width: 1100px; width: 100%; margin: 0 auto; }
+        .plate-row span:nth-child(odd) { color: rgba(255, 122, 47, 0.6); }
+        .plate-row span:nth-child(even) { color: rgba(139, 92, 246, 0.75); }
+        .plate-row small { display: block; margin-top: 6px; opacity: 0.7; font-size: 10px; }
+        .plate-row.bottom span:last-child { text-align: right; }
+        .plate-row.bottom span:nth-child(2) { text-align: center; color: var(--muted); }
+        .plate-center { align-self: center; max-width: 1100px; width: 100%; margin: 0 auto; }
+        .plate {
+            position: relative;
+            padding: clamp(12px, 2vw, 20px) clamp(12px, 3vw, 32px);
+            border: 1px solid rgba(255, 122, 47, 0.35);
+            background:
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 3px),
+                linear-gradient(180deg, #120c1c, #0e0916);
+            box-shadow: inset 0 -6px 0 #050308, 0 0 60px rgba(139, 92, 246, 0.08);
+            text-align: center;
+        }
+        .plate::before, .plate::after {
+            content: "";
+            position: absolute;
+            top: -3px;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        .plate::before { left: -3px; }
+        .plate::after { right: -3px; background: var(--accent-2); }
+        .wordmark {
+            margin: 0;
+            font: 700 clamp(22px, 6.4vw, 84px)/1.1 var(--sans);
+            letter-spacing: -0.03em;
+            text-transform: none;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            overflow-wrap: anywhere;
+        }
+        .ruler {
+            height: 10px;
+            margin-top: 14px;
+            background:
+                repeating-linear-gradient(90deg, rgba(255, 122, 47, 0.45) 0 1px, transparent 1px 10%),
+                repeating-linear-gradient(90deg, rgba(154, 143, 171, 0.35) 0 1px, transparent 1px 2.5%);
+            background-size: 100% 10px, 100% 5px;
+            background-repeat: no-repeat;
+        }
+        .plate-sub { margin: 20px 0 0; color: var(--muted); text-align: center; letter-spacing: 0.2em; }
+        @media (max-width: 600px) {
+            .plate-row.bottom { flex-direction: column; }
+            .plate-row.bottom span, .plate-row.bottom span:last-child, .plate-row.bottom span:nth-child(2) { text-align: left; }
+        }
     </style>
 </head>
 
@@ -25,9 +91,24 @@
         <a href="https://github.com/rick-masterson">github</a>
     </header>
 
-    <main class="page">
-        <p class="eyebrow">Portfolio · 2016 internship, Interapt</p>
-        <h1>Rick Masterson</h1>
+    <section class="plate-wrap" aria-label="Rick Masterson">
+        <div class="plate-row"><span>Portfolio</span><span>Est. 2016</span></div>
+        <div class="plate-center">
+            <div class="plate">
+                <h1 class="wordmark">rick-masterson.github.io</h1>
+            </div>
+            <div class="ruler" aria-hidden="true"></div>
+            <p class="plate-sub">Rick Masterson · front-end projects</p>
+        </div>
+        <div class="plate-row bottom">
+            <span>HTML · CSS · JS<small>No frameworks</small></span>
+            <span>Interapt internship<small>Louisville, KY</small></span>
+            <span>5 projects<small>Rebuilt 2026</small></span>
+        </div>
+    </section>
+
+    <main class="page" id="projects">
+        <p class="eyebrow">Projects</p>
         <p class="lede">
             Front-end exercises from my internship at Interapt in Louisville, rebuilt in 2026 with
             current standards: no API keys, no frameworks, plain HTML, CSS and JavaScript.

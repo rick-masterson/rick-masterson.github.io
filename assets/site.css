@@ -1,13 +1,15 @@
 /* Shared look for the portfolio pages: dark, technical, one accent colour. */
 :root {
-    --bg: #0b0f14;
-    --surface: #111821;
-    --surface-2: #17202b;
-    --border: #243041;
-    --text: #e6edf3;
-    --muted: #8b98a9;
-    --accent: #4cc2ff;
-    --accent-ink: #04121c;
+    --bg: #0c0814;
+    --surface: #140f1f;
+    --surface-2: #1c1529;
+    --border: #2e2440;
+    --text: #ece6f3;
+    --muted: #9a8fab;
+    --accent: #ff7a2f;
+    --accent-2: #8b5cf6;
+    --gradient: linear-gradient(90deg, #ff7a2f, #e0508a 55%, #8b5cf6);
+    --accent-ink: #1a0b02;
     --green: #3fb950;
     --yellow: #d29922;
     --red: #f85149;
@@ -23,8 +25,8 @@ body {
     min-height: 100vh;
     background-color: var(--bg);
     background-image:
-        linear-gradient(rgba(76, 194, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(76, 194, 255, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(255, 122, 47, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 122, 47, 0.035) 1px, transparent 1px);
     background-size: 32px 32px;
     color: var(--text);
     font: 15px/1.6 var(--sans);
@@ -43,7 +45,7 @@ a:hover { text-decoration: underline; }
     justify-content: space-between;
     gap: 16px;
     padding: 12px 16px;
-    background: rgba(11, 15, 20, 0.85);
+    background: rgba(12, 8, 20, 0.85);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
     font-family: var(--mono);

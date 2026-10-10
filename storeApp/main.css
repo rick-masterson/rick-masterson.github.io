@@ -22,13 +22,13 @@ a { color: inherit; }
 
 .demo-bar {
     padding: 8px 16px;
-    color: #8b98a9;
-    background: #0b0f14;
+    color: #9a8fab;
+    background: #0c0814;
     font: 12px "JetBrains Mono", ui-monospace, monospace;
 }
 
-.demo-bar a { color: #e6edf3; text-decoration: none; }
-.demo-bar span { color: #4cc2ff; }
+.demo-bar a { color: #ece6f3; text-decoration: none; }
+.demo-bar span { color: #ff7a2f; }
 
 header.site {
     display: flex;
