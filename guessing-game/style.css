@@ -1,18 +1,28 @@
-body {
-    margin: 0;
-    padding: 16px;
-    background: black url("matrix.jpg") center / cover fixed;
-    color: yellowgreen;
-    font-family: Arial, Helvetica, sans-serif;
+.board {
+    max-width: 560px;
+    padding: 28px;
     text-align: center;
 }
 
-.rules {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 12px;
-    background: rgba(0, 0, 0, 0.75);
-    border-radius: 8px;
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    font-family: var(--mono);
+}
+
+.counter .label {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.counter .value {
+    color: var(--accent);
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .boxes {
@@ -22,37 +32,64 @@ body {
 }
 
 .box {
-    width: min(28vw, 200px);
-    height: min(36vw, 260px);
-    font-size: min(24vw, 160px);
+    width: min(26vw, 120px);
+    aspect-ratio: 3 / 4;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font: 500 min(16vw, 64px) var(--mono);
     text-align: center;
-    border: 3px solid #222;
-    border-radius: 8px;
-    background-color: lightslategray;
+    caret-color: var(--accent);
+    transition: border-color 0.15s, background-color 0.15s;
 }
 
-.box.green { background-color: limegreen; }
-.box.yellow { background-color: yellow; }
-.box.red { background-color: red; }
-.rules .green { color: limegreen; }
-.rules .yellow { color: yellow; }
-.rules .red { color: red; }
-
-button {
-    font-size: 20px;
-    padding: 8px 32px;
-    margin: 16px 8px 0;
-    color: white;
-    background-color: #2e8b57;
-    border: 0;
-    border-radius: 6px;
-    cursor: pointer;
+.box:focus {
+    outline: none;
+    border-color: var(--accent);
 }
 
-button:disabled { opacity: 0.5; cursor: default; }
+.box:disabled { opacity: 0.85; }
 
-h1, h2, #message { text-shadow: 0 0 6px black, 0 0 12px black; }
+.box.green { border-color: var(--green); background: rgba(63, 185, 80, 0.15); }
+.box.yellow { border-color: var(--yellow); background: rgba(210, 153, 34, 0.15); }
+.box.red { border-color: var(--red); background: rgba(248, 81, 73, 0.15); }
 
-#message { font-size: 24px; min-height: 1.5em; }
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+}
 
-a { color: yellowgreen; }
+#message {
+    min-height: 1.6em;
+    margin: 16px 0 0;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+    list-style: none;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+.swatch.green { background: var(--green); }
+.swatch.yellow { background: var(--yellow); }
+.swatch.red { background: var(--red); }

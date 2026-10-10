@@ -1,43 +1,29 @@
-.navbar-form .form-control {
-    display: inline-block;
-    width: 200px;
+.cards {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
-.message {
-    margin-left: 10px;
-    color: #ccc;
+.map-card h3 {
+    padding-right: 36px;
 }
 
-.card {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid #333333;
-    border-radius: 15px;
-    background-color: black;
-    color: lightgreen;
-    font-weight: bold;
-    text-align: center;
-}
-
-.card h4 {
-    color: white;
-    padding-right: 30px;
-}
-
-.map {
-    height: 300px;
+.map-card .map {
+    height: 280px;
+    margin-top: 16px;
+    border: 1px solid var(--border);
     border-radius: 8px;
+    background: var(--surface-2);
 }
 
-.close-card {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+/* Dark map tiles to match the page */
+.map-card .leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
 }
 
-footer {
-    padding: 20px;
-    text-align: center;
-    font-size: 12px;
+.map-card .leaflet-control-attribution {
+    background: rgba(17, 24, 33, 0.8);
+    color: var(--muted);
+}
+
+.map-card .leaflet-control-attribution a {
+    color: var(--accent);
 }

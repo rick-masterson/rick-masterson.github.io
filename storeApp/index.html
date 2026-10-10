@@ -5,46 +5,66 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Charlie's Organic Produce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@400&display=swap">
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    <div id="wrapper">
-        <header>
-            <img src="images/logo.png" alt="Charlie's Organic Produce logo" class="logo">
-            <h1>Charlie's Organic Produce!</h1>
-        </header>
-
-        <nav>
-            <ul>
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#order">Order</a></li>
-                <li><a href="../">More projects</a></li>
-            </ul>
-        </nav>
-
-        <div class="top">
-            <img src="images/farmers-market.jpg" alt="Fresh produce at a farmers market" class="banner">
-            <aside id="order">
-                <img src="images/ordernow.jpeg" alt="Order now">
-                <p>Call 1-555-555-5555 for special orders.</p>
-            </aside>
-        </div>
-
-        <h2 id="products">Products</h2>
-        <div class="product-grid">
-            <figure class="product-box"><img src="images/beets.png" alt=""><figcaption>Beets</figcaption></figure>
-            <figure class="product-box"><img src="images/blueberry.png" alt=""><figcaption>Blueberries</figcaption></figure>
-            <figure class="product-box"><img src="images/corn.png" alt=""><figcaption>Corn</figcaption></figure>
-            <figure class="product-box"><img src="images/coconut.png" alt=""><figcaption>Coconut</figcaption></figure>
-            <figure class="product-box"><img src="images/tm_kale.png" alt=""><figcaption>Kale</figcaption></figure>
-            <figure class="product-box"><img src="images/tm_framboise.png" alt=""><figcaption>Raspberries</figcaption></figure>
-            <figure class="product-box"><img src="images/tm_patate-douce.png" alt=""><figcaption>Sweet potatoes</figcaption></figure>
-            <figure class="product-box"><img src="images/tm_aubergine.png" alt=""><figcaption>Aubergine</figcaption></figure>
-            <figure class="product-box"><img src="images/tm_bette-a-carde.png" alt=""><figcaption>Swiss chard</figcaption></figure>
-        </div>
+    <div class="demo-bar">
+        <a href="../">~/rick-masterson</a> / <span>storeApp</span> · layout demo, not a real shop
     </div>
+
+    <header class="site">
+        <a class="brand" href="#">
+            <img src="images/logo.png" alt="">
+            <span>Charlie's Organic Produce</span>
+        </a>
+        <nav>
+            <a href="#products">Products</a>
+            <a href="#visit">Visit</a>
+            <a class="cta" href="#order">Order</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="images/farmers-market.jpg" alt="Fresh produce at a farmers market">
+        <div class="hero-text">
+            <p class="kicker">Locally grown · Certified organic</p>
+            <h1>Fresh from the field to your table.</h1>
+            <a class="button" href="#products">Browse this week's harvest</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="products" class="section">
+            <h2>This week's harvest</h2>
+            <div class="product-grid">
+                <figure class="product"><img src="images/beets.png" alt=""><figcaption>Beets</figcaption></figure>
+                <figure class="product"><img src="images/blueberry.png" alt=""><figcaption>Blueberries</figcaption></figure>
+                <figure class="product"><img src="images/corn.png" alt=""><figcaption>Sweet corn</figcaption></figure>
+                <figure class="product"><img src="images/coconut.png" alt=""><figcaption>Coconut</figcaption></figure>
+                <figure class="product"><img src="images/tm_kale.png" alt=""><figcaption>Kale</figcaption></figure>
+                <figure class="product"><img src="images/tm_framboise.png" alt=""><figcaption>Raspberries</figcaption></figure>
+                <figure class="product"><img src="images/tm_patate-douce.png" alt=""><figcaption>Sweet potatoes</figcaption></figure>
+                <figure class="product"><img src="images/tm_aubergine.png" alt=""><figcaption>Aubergine</figcaption></figure>
+                <figure class="product"><img src="images/tm_bette-a-carde.png" alt=""><figcaption>Swiss chard</figcaption></figure>
+            </div>
+        </section>
+
+        <section id="order" class="section order">
+            <div>
+                <h2>Special orders</h2>
+                <p>Need a bulk box or something not on the list? Call us and we'll set it aside.</p>
+            </div>
+            <a class="button" href="tel:+15555555555">Call 1-555-555-5555</a>
+        </section>
+    </main>
+
+    <footer id="visit" class="site-footer">
+        Charlie's Organic Produce · Saturday market, 8am–1pm
+    </footer>
 </body>
 
 </html>

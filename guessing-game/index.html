@@ -5,32 +5,49 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Guessing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../assets/site.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Guessing Game</h1>
-    <p class="rules">
-        Guess the three numbers, each from 0 to 9, all different. A box turns
-        <span class="green">green</span> if its number is right,
-        <span class="yellow">yellow</span> if the number is in another box, and
-        <span class="red">red</span> if it is not in the sequence. You have ten guesses.
-    </p>
-    <h2>Guesses remaining: <span id="counter">10</span></h2>
+    <header class="site-header">
+        <span class="path"><a href="../">~/rick-masterson</a> / <span class="here">guessing-game</span></span>
+    </header>
 
-    <div class="boxes">
-        <input class="box" id="box1" type="text" inputmode="numeric" maxlength="1" aria-label="First number">
-        <input class="box" id="box2" type="text" inputmode="numeric" maxlength="1" aria-label="Second number">
-        <input class="box" id="box3" type="text" inputmode="numeric" maxlength="1" aria-label="Third number">
-    </div>
+    <main class="page game">
+        <p class="eyebrow">Project</p>
+        <h1>Guessing Game</h1>
+        <p class="lede">Crack the code: three different digits from 0 to 9, in ten guesses or fewer.</p>
 
-    <p class="actions">
-        <button type="button" id="submit">Check</button>
-        <button type="button" id="restart" hidden>Play again</button>
-    </p>
-    <p id="message" role="status"></p>
+        <section class="card board">
+            <div class="counter">
+                <span class="label">Guesses left</span>
+                <span id="counter" class="value">10</span>
+            </div>
 
-    <p class="home"><a href="../">Back to projects</a></p>
+            <div class="boxes">
+                <input class="box" id="box1" type="text" inputmode="numeric" maxlength="1" aria-label="First digit">
+                <input class="box" id="box2" type="text" inputmode="numeric" maxlength="1" aria-label="Second digit">
+                <input class="box" id="box3" type="text" inputmode="numeric" maxlength="1" aria-label="Third digit">
+            </div>
+
+            <div class="actions">
+                <button type="button" id="submit" class="btn">Check guess</button>
+                <button type="button" id="restart" class="btn btn-ghost" hidden>Play again</button>
+            </div>
+            <p id="message" class="status" role="status"></p>
+
+            <ul class="legend">
+                <li><span class="swatch green"></span>Right digit, right place</li>
+                <li><span class="swatch yellow"></span>Right digit, wrong place</li>
+                <li><span class="swatch red"></span>Not in the code</li>
+            </ul>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 

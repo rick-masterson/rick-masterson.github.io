@@ -1,42 +1,46 @@
-.navbar-form .form-control {
-    display: inline-block;
-    width: 200px;
+.weather .now {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
 }
 
-.message {
-    margin-left: 10px;
-    color: #ccc;
+.weather .icon {
+    width: 56px;
+    height: 56px;
+    padding: 6px;
+    background: var(--surface-2);
+    border-radius: 12px;
 }
 
-.card {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid #333333;
-    border-radius: 15px;
-    background-color: black;
-    color: lightgreen;
-    font-weight: bold;
-    text-align: center;
+.weather .temp {
+    font: 500 40px/1 var(--mono);
+    letter-spacing: -0.03em;
 }
 
-.card h1, .card h3, .card h4 {
-    color: white;
+.weather .summary {
+    color: var(--muted);
 }
 
-.card .icon {
-    width: 64px;
-    height: 64px;
+.weather .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    border-top: 1px solid var(--border);
 }
 
-.close-card {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+.weather .stats div {
+    padding-top: 12px;
 }
 
-footer {
-    padding: 20px;
-    text-align: center;
-    font-size: 12px;
+.weather dt {
+    color: var(--muted);
+    font: 11px var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.weather dd {
+    margin: 0;
+    font: 500 15px var(--mono);
 }

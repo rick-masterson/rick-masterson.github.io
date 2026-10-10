@@ -70,21 +70,21 @@ function addCard(place, data) {
     var card = document.getElementById("card-template").content.cloneNode(true);
     var weather = WEATHER[data.current.weather_code] || ["Unknown", "cloudy"];
 
+    var root = card.querySelector(".card");
+
     card.querySelector(".place").textContent = placeName(place);
     card.querySelector(".icon").src = iconFor(weather[1], data.current.is_day);
     card.querySelector(".summary").textContent = weather[0];
     card.querySelector(".temp").textContent = Math.round(data.current.temperature_2m) + "°F";
-    card.querySelector(".high-low").textContent =
-        "High " + Math.round(data.daily.temperature_2m_max[0]) + "°F / Low " +
-        Math.round(data.daily.temperature_2m_min[0]) + "°F";
-    card.querySelector(".precip").textContent =
-        "Chance of precipitation " + data.daily.precipitation_probability_max[0] + "%";
+    card.querySelector(".high").textContent = Math.round(data.daily.temperature_2m_max[0]) + "°";
+    card.querySelector(".low").textContent = Math.round(data.daily.temperature_2m_min[0]) + "°";
+    card.querySelector(".precip").textContent = data.daily.precipitation_probability_max[0] + "%";
     card.querySelector(".time").textContent = "Local time " + data.current.time.replace("T", " ");
-    card.querySelector(".close-card").addEventListener("click", function (e) {
-        e.currentTarget.closest(".col-sm-6").remove();
+    card.querySelector(".close-card").addEventListener("click", function () {
+        root.remove();
     });
 
-    document.getElementById("cards").appendChild(card);
+    document.getElementById("cards").appendChild(root);
 }
 
 document.getElementById("search").addEventListener("submit", function (e) {

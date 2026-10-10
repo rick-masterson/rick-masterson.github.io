@@ -5,28 +5,64 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rick Masterson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="assets/site.css">
     <style>
-        body {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 16px;
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.5;
-        }
-        li { margin-bottom: 12px; }
+        .project { display: flex; flex-direction: column; color: var(--text); transition: border-color 0.15s, transform 0.15s; }
+        .project:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); }
+        .project p { flex: 1; margin: 8px 0 16px; color: var(--muted); }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { padding: 2px 8px; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; font: 11px var(--mono); }
+        .project .arrow { color: var(--accent); font-family: var(--mono); }
     </style>
 </head>
 
 <body>
-    <h1>Rick Masterson</h1>
-    <p>Small HTML, CSS and JavaScript projects from my 2016 internship at Interapt, cleaned up in 2026.</p>
-    <ul>
-        <li><a href="guessing-game/">Guessing Game</a>: guess three different digits in ten tries.</li>
-        <li><a href="weatherly/">Weatherly</a>: current weather cards for any city or zip code.</li>
-        <li><a href="maply/">Maply</a>: map cards for any city or zip code.</li>
-        <li><a href="storeApp/">Charlie's Organic Produce</a>: a storefront layout in HTML and CSS.</li>
-        <li><a href="files/fixit.js">fixit.js</a>: a JavaScript debugging exercise (run with Node).</li>
-    </ul>
+    <header class="site-header">
+        <span class="path"><span class="here">~/rick-masterson</span></span>
+        <a href="https://github.com/rick-masterson">github</a>
+    </header>
+
+    <main class="page">
+        <p class="eyebrow">Portfolio · 2016 internship, Interapt</p>
+        <h1>Rick Masterson</h1>
+        <p class="lede">
+            Front-end exercises from my internship at Interapt in Louisville, rebuilt in 2026 with
+            current standards: no API keys, no frameworks, plain HTML, CSS and JavaScript.
+        </p>
+
+        <div class="cards">
+            <a class="card project" href="weatherly/">
+                <h2>Weatherly <span class="arrow">→</span></h2>
+                <p>Live weather cards for any city or zip code, with daily high, low and chance of rain.</p>
+                <div class="tags"><span class="tag">fetch</span><span class="tag">Open-Meteo API</span><span class="tag">templates</span></div>
+            </a>
+            <a class="card project" href="maply/">
+                <h2>Maply <span class="arrow">→</span></h2>
+                <p>Search a place and pin it on an interactive map. Each search adds its own map card.</p>
+                <div class="tags"><span class="tag">Leaflet</span><span class="tag">OpenStreetMap</span><span class="tag">geocoding</span></div>
+            </a>
+            <a class="card project" href="guessing-game/">
+                <h2>Guessing Game <span class="arrow">→</span></h2>
+                <p>Crack a three-digit code in ten tries, with colour hints after each guess.</p>
+                <div class="tags"><span class="tag">DOM events</span><span class="tag">game logic</span></div>
+            </a>
+            <a class="card project" href="storeApp/">
+                <h2>Charlie's Organic Produce <span class="arrow">→</span></h2>
+                <p>A responsive storefront layout for a local produce business.</p>
+                <div class="tags"><span class="tag">CSS grid</span><span class="tag">flexbox</span><span class="tag">responsive</span></div>
+            </a>
+            <a class="card project" href="files/fixit.js">
+                <h2>fixit.js <span class="arrow">→</span></h2>
+                <p>A debugging exercise: find and fix the bugs in a small RPG party script. Run with Node.</p>
+                <div class="tags"><span class="tag">debugging</span><span class="tag">Node.js</span></div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="site-footer">© Rick Masterson · <a href="https://github.com/rick-masterson/rick-masterson.github.io">Source on GitHub</a></footer>
 </body>
 
 </html>

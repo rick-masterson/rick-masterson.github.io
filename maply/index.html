@@ -5,43 +5,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maply</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@3.3.7/slate/bootstrap.min.css" integrity="sha384-RpX8okQqCyUNG7PlOYNybyJXYTtGQH+7rIKiVvg1DLg6jahLEk47VvpUyS+E2/uJ" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/site.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <form class="navbar-form" id="search">
-                <a class="navbar-brand" href="../">Maply</a>
-                <input class="form-control" type="text" id="place" placeholder="City or zip code" required>
-                <button type="submit" class="btn btn-default" aria-label="Add a map">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-                <span id="message" class="message" role="status"></span>
-            </form>
-        </div>
-    </nav>
+    <header class="site-header">
+        <span class="path"><a href="../">~/rick-masterson</a> / <span class="here">maply</span></span>
+    </header>
 
-    <div class="container">
-        <div class="row" id="cards"></div>
-    </div>
+    <main class="page">
+        <p class="eyebrow">Project</p>
+        <h1>Maply</h1>
+        <p class="lede">Search a city or zip code and pin it on an interactive map.</p>
+
+        <form class="search" id="search">
+            <input class="input" type="text" id="place" placeholder="City or zip code, e.g. Louisville" required aria-label="City or zip code">
+            <button type="submit" class="btn">Add map</button>
+            <span id="message" class="status" role="status"></span>
+        </form>
+
+        <div class="cards" id="cards"></div>
+        <p class="empty">No maps yet. Search above to add one.</p>
+    </main>
 
     <template id="card-template">
-        <div class="col-sm-6 col-md-4">
-            <div class="card">
-                <button type="button" class="btn btn-default btn-xs close-card" aria-label="Remove">
-                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
-                <h4 class="place"></h4>
-                <div class="map"></div>
-            </div>
-        </div>
+        <article class="card map-card">
+            <button type="button" class="remove close-card" aria-label="Remove">×</button>
+            <h3 class="place"></h3>
+            <p class="meta coords"></p>
+            <div class="map"></div>
+        </article>
     </template>
 
-    <footer>
-        Place search by <a href="https://open-meteo.com/">Open-Meteo.com</a>.
+    <footer class="site-footer">
+        Place search by <a href="https://open-meteo.com/">Open-Meteo.com</a> ·
+        Maps © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous"></script>

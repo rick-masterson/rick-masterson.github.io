@@ -17,16 +17,17 @@ function findPlace(text) {
 function addCard(place) {
     var card = document.getElementById("card-template").content.cloneNode(true);
     var name = [place.name, place.admin1, place.country].filter(Boolean).join(", ");
-    var column = card.firstElementChild;
+    var root = card.querySelector(".card");
 
     card.querySelector(".place").textContent = name;
+    card.querySelector(".coords").textContent = place.latitude.toFixed(4) + ", " + place.longitude.toFixed(4);
     card.querySelector(".close-card").addEventListener("click", function () {
-        column.remove();
+        root.remove();
     });
-    document.getElementById("cards").appendChild(card);
+    document.getElementById("cards").appendChild(root);
 
     // Leaflet needs the element on the page before it can draw the map.
-    var map = L.map(column.querySelector(".map")).setView([place.latitude, place.longitude], 10);
+    var map = L.map(root.querySelector(".map")).setView([place.latitude, place.longitude], 10);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
